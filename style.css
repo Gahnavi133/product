@@ -85,3 +85,31 @@ button {
 button:hover {
   background: #0056b3;
 }
+.cart-btn {
+  position: relative;
+  background: rgb(134, 40, 40);
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.cart-btn i {
+  font-size: 20px;
+}
+
+#cartCount {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: rgb(224, 202, 202);
+  color: rgb(8, 7, 7);
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
