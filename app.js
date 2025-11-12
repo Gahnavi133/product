@@ -1,3 +1,20 @@
+// initialize cart count from localStorage (persist between reloads)
+let cartCount = localStorage.getItem('cartCount') 
+  ? parseInt(localStorage.getItem('cartCount')) 
+  : 0;
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('cartCount').textContent = cartCount;
+});
+
+function addToCart(productName) {
+  cartCount++;
+  document.getElementById('cartCount').textContent = cartCount;
+  localStorage.setItem('cartCount', cartCount);
+  alert(`${productName} added to cart!`);
+}
+
+
 const products = [
   {id:1, title:"Wireless Headphones", price:"₹2,499", cat:"gadgets", img:"https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSH-L1wptEWh_pqtT02_z_3VR0N31W7Glad3erC8ElPv9Jk9UI4AwmPRhZ_LEp5r6FJyR5BTiMTh9R5ZI7I9bHOegW8d_3PrpB27t8j8gOx"},
   {id:2, title:"Dark Chocolate Box", price:"₹799", cat:"chocolates", img:"https://images-cdn.ubuy.co.in/633b2c181b0bca35e43f5b16-ubuy-online-shopping.jpg"},
@@ -33,7 +50,9 @@ function renderProducts(filteredProducts) {
 
     const btn = document.createElement("button");
     btn.textContent = "Add to Cart";
-    btn.onclick = () => alert(`${p.title} added to cart!`);
+
+    // IMPORTANT: call addToCart so cartCount updates
+    btn.onclick = () => addToCart(p.title);
 
     card.append(img, title, price, btn);
     container.appendChild(card);
